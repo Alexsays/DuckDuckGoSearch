@@ -142,24 +142,31 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let searchTerm = searchBar.text else {
             return
         }
+
         if reachability.currentReachabilityStatus == .notReachable {
             self.showNoInternetConnection()
-        }
+        } else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
-        let trimmedSearchTerm = searchTerm.trimmingCharacters(in: .whitespacesAndNewlines)
-        searchBar.text = trimmedSearchTerm
+            let trimmedSearchTerm = searchTerm.trimmingCharacters(in: .whitespacesAndNewlines)
+            searchBar.text = trimmedSearchTerm
 
-        if trimmedSearchTerm.characters.count > 0 {
-            WSClient.sharedInstance.searchByTerm(trimmedSearchTerm, completion: { (results: [Result]?, error: Error?) in
-                if let results = results {
-                    self.searchResults = results
+            if trimmedSearchTerm.characters.count > 0 {
+                WSClient.sharedInstance.searchByTerm(trimmedSearchTerm, completion: { (results: [Result]?, error: Error?) in
+                    if let results = results {
+                        self.searchResults = results
 
-                    DispatchQueue.main.async {
-                        self.configureSearchUI()
+                        DispatchQueue.main.async {
+                            self.configureSearchUI()
+                        }
                     }
-                }
-            })
+
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                })
+            }
         }
+
+        resignKeyboard()
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
