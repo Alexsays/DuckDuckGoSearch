@@ -10,7 +10,7 @@ import UIKit
 import ReachabilitySwift
 import SDWebImage
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var searchField: UISearchBar!
     @IBOutlet weak var resultsTableView: UITableView!
     var backImageView: UIImageView!
@@ -52,7 +52,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             NSLayoutConstraint(item: backImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 150),
             NSLayoutConstraint(item: backImageView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: backImageView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0)
-        ])
+            ])
 
         // Create background label with constraints
         backLabel = UILabel()
@@ -68,10 +68,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             NSLayoutConstraint(item: backLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: UIScreen.main.bounds.width - 40.0),
             NSLayoutConstraint(item: backLabel, attribute: .top, relatedBy: .equal, toItem: backImageView, attribute: .bottom, multiplier: 1.0, constant: 30),
             NSLayoutConstraint(item: backLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
-        ])
+            ])
 
         // Add gesture recognizer
         let backTapGesture = UITapGestureRecognizer(target: self, action: #selector(resignKeyboard))
+        backTapGesture.delegate = self
         self.view.addGestureRecognizer(backTapGesture)
     }
 
@@ -125,6 +126,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchField.endEditing(false)
     }
 
+    // MARK: - UIGestureRecognizer delegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let view = touch.view, view.isDescendant(of: resultsTableView) {
+            return false
+        }
+
+        return true
+    }
+
     // MARK: - UISearchBar delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else {
@@ -141,7 +151,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             WSClient.sharedInstance.searchByTerm(trimmedSearchTerm, completion: { (results: [Result]?, error: Error?) in
                 if let results = results {
                     self.searchResults = results
-                    
+
                     DispatchQueue.main.async {
                         self.configureSearchUI()
                     }
@@ -185,11 +195,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let url = searchResults[indexPath.row].url {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
-
+        
         searchField.endEditing(false)
-
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
 }
-

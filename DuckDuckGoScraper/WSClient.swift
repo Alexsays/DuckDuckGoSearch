@@ -15,7 +15,9 @@ class WSClient: NSObject {
     private override init() { }
 
     func searchByTerm(_ term: String, completion: @escaping (_ results: [Result]?, _ error: Error?) -> Void) {
-        let url = URL(string: "https://duckduckgo.com/?q=\(term)&format=json")
+        guard let scapedString = "https://duckduckgo.com/?q=\(term)&format=json".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        
+        let url = URL(string: scapedString)
 
         let request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 15.0)
 
