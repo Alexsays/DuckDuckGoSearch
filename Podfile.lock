@@ -1,0 +1,20 @@
+PODS:
+  - ReachabilitySwift (3)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - ReachabilitySwift
+  - SDWebImage
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: ff28e997d309013a4b99291e086376fc2d7b619f
+
+COCOAPODS: 1.2.1

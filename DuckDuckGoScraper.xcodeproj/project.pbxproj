@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07DA86CEDCBA6DFDD2BB24DB /* Pods_DuckDuckGoScraper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA11E9D11BBFCBF7DF5DA3C /* Pods_DuckDuckGoScraper.framework */; };
+		9C3369191F5EE1B3006E82D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3369181F5EE1B3006E82D5 /* AppDelegate.swift */; };
+		9C33691B1F5EE1B3006E82D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C33691A1F5EE1B3006E82D5 /* MainViewController.swift */; };
+		9C33691E1F5EE1B3006E82D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C33691C1F5EE1B3006E82D5 /* Main.storyboard */; };
+		9C3369201F5EE1B3006E82D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C33691F1F5EE1B3006E82D5 /* Assets.xcassets */; };
+		9C3369231F5EE1B3006E82D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3369211F5EE1B3006E82D5 /* LaunchScreen.storyboard */; };
+		9C33692B1F5EF0DF006E82D5 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C33692A1F5EF0DF006E82D5 /* ResultTableViewCell.swift */; };
+		9C3369311F5FD887006E82D5 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3369301F5FD887006E82D5 /* Result.swift */; };
+		9C3369341F5FFA87006E82D5 /* WSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3369331F5FFA87006E82D5 /* WSClient.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2D5EA7FC51F5E5F20D29493D /* Pods-DuckDuckGoScraper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuckDuckGoScraper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DuckDuckGoScraper/Pods-DuckDuckGoScraper.debug.xcconfig"; sourceTree = "<group>"; };
+		9C3369151F5EE1B3006E82D5 /* DuckDuckGoScraper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckDuckGoScraper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C3369181F5EE1B3006E82D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9C33691A1F5EE1B3006E82D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9C33691D1F5EE1B3006E82D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9C33691F1F5EE1B3006E82D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9C3369221F5EE1B3006E82D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9C3369241F5EE1B3006E82D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C33692A1F5EF0DF006E82D5 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		9C3369301F5FD887006E82D5 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		9C3369331F5FFA87006E82D5 /* WSClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSClient.swift; sourceTree = "<group>"; };
+		C45B95865A016CB72C0FE02D /* Pods-DuckDuckGoScraper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuckDuckGoScraper.release.xcconfig"; path = "Pods/Target Support Files/Pods-DuckDuckGoScraper/Pods-DuckDuckGoScraper.release.xcconfig"; sourceTree = "<group>"; };
+		EFA11E9D11BBFCBF7DF5DA3C /* Pods_DuckDuckGoScraper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuckDuckGoScraper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C3369121F5EE1B3006E82D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DA86CEDCBA6DFDD2BB24DB /* Pods_DuckDuckGoScraper.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		398D94611C1D6F6171DC859A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D5EA7FC51F5E5F20D29493D /* Pods-DuckDuckGoScraper.debug.xcconfig */,
+				C45B95865A016CB72C0FE02D /* Pods-DuckDuckGoScraper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9C33690C1F5EE1B3006E82D5 = {
+			isa = PBXGroup;
+			children = (
+				9C3369171F5EE1B3006E82D5 /* DuckDuckGoScraper */,
+				9C3369161F5EE1B3006E82D5 /* Products */,
+				398D94611C1D6F6171DC859A /* Pods */,
+				C63FE44D0B4804EE14FBB80C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9C3369161F5EE1B3006E82D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C3369151F5EE1B3006E82D5 /* DuckDuckGoScraper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C3369171F5EE1B3006E82D5 /* DuckDuckGoScraper */ = {
+			isa = PBXGroup;
+			children = (
+				9C3369181F5EE1B3006E82D5 /* AppDelegate.swift */,
+				9C3369321F5FFA5E006E82D5 /* Helpers */,
+				9C33692F1F5FD81A006E82D5 /* Models */,
+				9C33692D1F5FD7FE006E82D5 /* CustomViews */,
+				9C33692C1F5FD7EC006E82D5 /* ViewControllers */,
+				9C33691C1F5EE1B3006E82D5 /* Main.storyboard */,
+				9C33691F1F5EE1B3006E82D5 /* Assets.xcassets */,
+				9C3369211F5EE1B3006E82D5 /* LaunchScreen.storyboard */,
+				9C3369241F5EE1B3006E82D5 /* Info.plist */,
+			);
+			path = DuckDuckGoScraper;
+			sourceTree = "<group>";
+		};
+		9C33692C1F5FD7EC006E82D5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9C33691A1F5EE1B3006E82D5 /* MainViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9C33692D1F5FD7FE006E82D5 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				9C33692A1F5EF0DF006E82D5 /* ResultTableViewCell.swift */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		9C33692F1F5FD81A006E82D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9C3369301F5FD887006E82D5 /* Result.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9C3369321F5FFA5E006E82D5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9C3369331F5FFA87006E82D5 /* WSClient.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		C63FE44D0B4804EE14FBB80C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EFA11E9D11BBFCBF7DF5DA3C /* Pods_DuckDuckGoScraper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9C3369141F5EE1B3006E82D5 /* DuckDuckGoScraper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C3369271F5EE1B3006E82D5 /* Build configuration list for PBXNativeTarget "DuckDuckGoScraper" */;
+			buildPhases = (
+				7FCC7009FBC9FCDFBCF82E9E /* [CP] Check Pods Manifest.lock */,
+				9C3369111F5EE1B3006E82D5 /* Sources */,
+				9C3369121F5EE1B3006E82D5 /* Frameworks */,
+				9C3369131F5EE1B3006E82D5 /* Resources */,
+				403D1EF84DE30C6CAAC1888C /* [CP] Embed Pods Frameworks */,
+				895AE802BC9BB4491CADE0FF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DuckDuckGoScraper;
+			productName = DuckDuckGoScraper;
+			productReference = 9C3369151F5EE1B3006E82D5 /* DuckDuckGoScraper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C33690D1F5EE1B3006E82D5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Alex Silva";
+				TargetAttributes = {
+					9C3369141F5EE1B3006E82D5 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9C3369101F5EE1B3006E82D5 /* Build configuration list for PBXProject "DuckDuckGoScraper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9C33690C1F5EE1B3006E82D5;
+			productRefGroup = 9C3369161F5EE1B3006E82D5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9C3369141F5EE1B3006E82D5 /* DuckDuckGoScraper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C3369131F5EE1B3006E82D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C3369231F5EE1B3006E82D5 /* LaunchScreen.storyboard in Resources */,
+				9C3369201F5EE1B3006E82D5 /* Assets.xcassets in Resources */,
+				9C33691E1F5EE1B3006E82D5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		403D1EF84DE30C6CAAC1888C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DuckDuckGoScraper/Pods-DuckDuckGoScraper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FCC7009FBC9FCDFBCF82E9E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		895AE802BC9BB4491CADE0FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DuckDuckGoScraper/Pods-DuckDuckGoScraper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C3369111F5EE1B3006E82D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C33691B1F5EE1B3006E82D5 /* MainViewController.swift in Sources */,
+				9C33692B1F5EF0DF006E82D5 /* ResultTableViewCell.swift in Sources */,
+				9C3369311F5FD887006E82D5 /* Result.swift in Sources */,
+				9C3369341F5FFA87006E82D5 /* WSClient.swift in Sources */,
+				9C3369191F5EE1B3006E82D5 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9C33691C1F5EE1B3006E82D5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C33691D1F5EE1B3006E82D5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9C3369211F5EE1B3006E82D5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C3369221F5EE1B3006E82D5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C3369251F5EE1B3006E82D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9C3369261F5EE1B3006E82D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9C3369281F5EE1B3006E82D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D5EA7FC51F5E5F20D29493D /* Pods-DuckDuckGoScraper.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = DuckDuckGoScraper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.DuckDuckGoScraper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9C3369291F5EE1B3006E82D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C45B95865A016CB72C0FE02D /* Pods-DuckDuckGoScraper.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = DuckDuckGoScraper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.DuckDuckGoScraper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C3369101F5EE1B3006E82D5 /* Build configuration list for PBXProject "DuckDuckGoScraper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C3369251F5EE1B3006E82D5 /* Debug */,
+				9C3369261F5EE1B3006E82D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C3369271F5EE1B3006E82D5 /* Build configuration list for PBXNativeTarget "DuckDuckGoScraper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C3369281F5EE1B3006E82D5 /* Debug */,
+				9C3369291F5EE1B3006E82D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C33690D1F5EE1B3006E82D5 /* Project object */;
+}
