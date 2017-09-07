@@ -385,7 +385,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DuckDuckGoScraper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.DuckDuckGoScraper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arekutsu.DuckDuckGoScraper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -399,7 +399,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DuckDuckGoScraper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.DuckDuckGoScraper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arekutsu.DuckDuckGoScraper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

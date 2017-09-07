@@ -36,7 +36,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func initialUI() {
         // SearchBar configuration
-        searchField.barTintColor = UIColor.white
+        searchField.barTintColor = .white
+        let cancelButtonAttributes = [NSForegroundColorAttributeName: UIColor.darkGray]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
 
         // TableView configuration
         resultsTableView.isHidden = true
@@ -164,6 +166,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let text = searchBar.text, text.isEmpty, searchResults.count == 0 {
             configureSearchUI()
         }
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchField.text = ""
+        resignKeyboard()
     }
 
     // MARK: - UITableView delegate and datasource
