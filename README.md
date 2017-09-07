@@ -1,13 +1,13 @@
 # DuckDuckGoSearch
 iOS app that searches RelatedTopics for a term in DuckDuckGo using Instant API
 
-# Language
+## Language
 Swift 3.1.1
 
-# iOS version
+## iOS version
 10.3
 
-# Third party libraries
+## Third party libraries
 [ReachabilitySwift](https://cocoapods.org/pods/ReachabilitySwift "ReachabilitySwift")
 
 [SDWebImage](https://cocoapods.org/pods/SDWebImage "SDWebImage")
