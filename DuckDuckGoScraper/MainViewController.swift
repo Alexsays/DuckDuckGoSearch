@@ -10,11 +10,14 @@ import UIKit
 import ReachabilitySwift
 import SDWebImage
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate, RecentsDelegate {
     @IBOutlet weak var searchField: UISearchBar!
     @IBOutlet weak var resultsTableView: UITableView!
     var backImageView: UIImageView!
     var backLabel: UILabel!
+    var recentsView: RecentsView!
+
+    var recentsHeight: NSLayoutConstraint!
 
     let reachability = Reachability()!
     var searchResults = [Result]()
@@ -40,6 +43,28 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cancelButtonAttributes = [NSForegroundColorAttributeName: UIColor.darkGray]
         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
 
+        // RecentsView configuration
+        recentsView = RecentsView()
+        recentsView.isHidden = true
+        recentsView.delegate = self
+        recentsView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(recentsView)
+
+        recentsHeight = NSLayoutConstraint(item: recentsView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 38)
+
+        view.addConstraints([
+            recentsHeight,
+            NSLayoutConstraint(item: recentsView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: recentsView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: recentsView, attribute: .top, relatedBy: .equal, toItem: searchField, attribute: .bottom, multiplier: 1.0, constant: 0)
+        ])
+
+        if let recentSearches = DataHelper.sharedInstance.recentSearches {
+            for recent in recentSearches {
+                addRecentItem(term: recent)
+            }
+        }
+
         // TableView configuration
         resultsTableView.isHidden = true
         resultsTableView.tableFooterView = UIView()
@@ -54,7 +79,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             NSLayoutConstraint(item: backImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 150),
             NSLayoutConstraint(item: backImageView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: backImageView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0)
-            ])
+        ])
 
         // Create background label with constraints
         backLabel = UILabel()
@@ -70,7 +95,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             NSLayoutConstraint(item: backLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: UIScreen.main.bounds.width - 40.0),
             NSLayoutConstraint(item: backLabel, attribute: .top, relatedBy: .equal, toItem: backImageView, attribute: .bottom, multiplier: 1.0, constant: 30),
             NSLayoutConstraint(item: backLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
-            ])
+        ])
 
         // Add gesture recognizer
         let backTapGesture = UITapGestureRecognizer(target: self, action: #selector(resignKeyboard))
@@ -128,6 +153,39 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchField.endEditing(false)
     }
 
+    func removeAll() {
+        DataHelper.sharedInstance.recentSearches = nil
+
+        for recentView in recentsView.stackView.subviews {
+            recentView.removeFromSuperview()
+        }
+
+        recentsHeight.constant = 38
+
+        recentsView.isHidden = true
+    }
+
+    func addRecentItem(term: String) {
+        let recentView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+        let titleLabel = UILabel(frame: CGRect(x: 20, y: 10, width: self.view.frame.width - 40, height: 30))
+        titleLabel.font = UIFont.systemFont(ofSize: 14.0)
+        titleLabel.text = term
+        titleLabel.textColor = .gray
+        titleLabel.isUserInteractionEnabled = true
+        recentsHeight.constant = recentsHeight.constant + recentView.frame.height
+        let recentTap = UITapGestureRecognizer(target: self, action: #selector(recentTapped(_ :)))
+        titleLabel.addGestureRecognizer(recentTap)
+        recentView.addSubview(titleLabel)
+        self.recentsView.stackView.insertArrangedSubview(recentView, at: 0)
+    }
+
+    func recentTapped(_ sender: UITapGestureRecognizer) {
+        let label = sender.view as! UILabel
+        searchField.text = label.text!
+
+        recentsView.isHidden = true
+    }
+
     // MARK: - UIGestureRecognizer delegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if let view = touch.view, view.isDescendant(of: resultsTableView) {
@@ -161,6 +219,33 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                     }
 
+                    if let recentSearches = DataHelper.sharedInstance.recentSearches {
+                        if !recentSearches.contains(trimmedSearchTerm) {
+                            var recents = recentSearches
+                            recents.append(trimmedSearchTerm)
+                            if recents.count > 3 {
+                                DispatchQueue.main.async {
+                                    self.recentsView.stackView.subviews.first?.removeFromSuperview()
+                                    self.recentsHeight.constant = self.recentsHeight.constant - 50
+                                }
+                                recents.removeFirst()
+                            }
+                            DataHelper.sharedInstance.recentSearches = recents
+
+                            DispatchQueue.main.async {
+                                self.addRecentItem(term: trimmedSearchTerm)
+                            }
+                        }
+                    } else {
+                        DataHelper.sharedInstance.recentSearches = [ trimmedSearchTerm ]
+
+                        DispatchQueue.main.async {
+                            self.addRecentItem(term: trimmedSearchTerm)
+                        }
+                    }
+
+
+
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 })
             }
@@ -173,14 +258,28 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let text = searchBar.text, text.isEmpty, searchResults.count == 0 {
             configureSearchUI()
         }
+
+        if let text = searchBar.text, text.isEmpty {
+            recentsView.isHidden = false
+        } else {
+            recentsView.isHidden = true
+        }
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
+
+        if let text = searchBar.text, text.isEmpty, let recentSearches = DataHelper.sharedInstance.recentSearches, recentSearches.count > 0 {
+            recentsView.isHidden = false
+        }
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
+
+        if !recentsView.isHidden {
+            recentsView.isHidden = true
+        }
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

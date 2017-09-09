@@ -16,6 +16,9 @@
 		9C33692B1F5EF0DF006E82D5 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C33692A1F5EF0DF006E82D5 /* ResultTableViewCell.swift */; };
 		9C3369311F5FD887006E82D5 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3369301F5FD887006E82D5 /* Result.swift */; };
 		9C3369341F5FFA87006E82D5 /* WSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3369331F5FFA87006E82D5 /* WSClient.swift */; };
+		9C51555D1F647ADE00BC104B /* RecentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51555C1F647ADE00BC104B /* RecentsView.swift */; };
+		9C5155611F647E5E00BC104B /* RecentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5155601F647E5E00BC104B /* RecentsView.xib */; };
+		9C5155631F64807B00BC104B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5155621F64807B00BC104B /* DataHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		9C33692A1F5EF0DF006E82D5 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		9C3369301F5FD887006E82D5 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		9C3369331F5FFA87006E82D5 /* WSClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSClient.swift; sourceTree = "<group>"; };
+		9C51555C1F647ADE00BC104B /* RecentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsView.swift; sourceTree = "<group>"; };
+		9C5155601F647E5E00BC104B /* RecentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentsView.xib; sourceTree = "<group>"; };
+		9C5155621F64807B00BC104B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		C45B95865A016CB72C0FE02D /* Pods-DuckDuckGoScraper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuckDuckGoScraper.release.xcconfig"; path = "Pods/Target Support Files/Pods-DuckDuckGoScraper/Pods-DuckDuckGoScraper.release.xcconfig"; sourceTree = "<group>"; };
 		EFA11E9D11BBFCBF7DF5DA3C /* Pods_DuckDuckGoScraper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuckDuckGoScraper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +88,7 @@
 				9C33692D1F5FD7FE006E82D5 /* CustomViews */,
 				9C33692C1F5FD7EC006E82D5 /* ViewControllers */,
 				9C33691C1F5EE1B3006E82D5 /* Main.storyboard */,
+				9C5155601F647E5E00BC104B /* RecentsView.xib */,
 				9C33691F1F5EE1B3006E82D5 /* Assets.xcassets */,
 				9C3369211F5EE1B3006E82D5 /* LaunchScreen.storyboard */,
 				9C3369241F5EE1B3006E82D5 /* Info.plist */,
@@ -101,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				9C33692A1F5EF0DF006E82D5 /* ResultTableViewCell.swift */,
+				9C51555C1F647ADE00BC104B /* RecentsView.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				9C3369331F5FFA87006E82D5 /* WSClient.swift */,
+				9C5155621F64807B00BC104B /* DataHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -164,6 +173,7 @@
 				TargetAttributes = {
 					9C3369141F5EE1B3006E82D5 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = VCJ54TJ566;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -194,6 +204,7 @@
 				9C3369231F5EE1B3006E82D5 /* LaunchScreen.storyboard in Resources */,
 				9C3369201F5EE1B3006E82D5 /* Assets.xcassets in Resources */,
 				9C33691E1F5EE1B3006E82D5 /* Main.storyboard in Resources */,
+				9C5155611F647E5E00BC104B /* RecentsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,9 +264,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C33691B1F5EE1B3006E82D5 /* MainViewController.swift in Sources */,
+				9C51555D1F647ADE00BC104B /* RecentsView.swift in Sources */,
 				9C33692B1F5EF0DF006E82D5 /* ResultTableViewCell.swift in Sources */,
 				9C3369311F5FD887006E82D5 /* Result.swift in Sources */,
 				9C3369341F5FFA87006E82D5 /* WSClient.swift in Sources */,
+				9C5155631F64807B00BC104B /* DataHelper.swift in Sources */,
 				9C3369191F5EE1B3006E82D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,7 +395,7 @@
 			baseConfigurationReference = 2D5EA7FC51F5E5F20D29493D /* Pods-DuckDuckGoScraper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VCJ54TJ566;
 				INFOPLIST_FILE = DuckDuckGoScraper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arekutsu.DuckDuckGoScraper;
@@ -396,7 +409,7 @@
 			baseConfigurationReference = C45B95865A016CB72C0FE02D /* Pods-DuckDuckGoScraper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VCJ54TJ566;
 				INFOPLIST_FILE = DuckDuckGoScraper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arekutsu.DuckDuckGoScraper;
