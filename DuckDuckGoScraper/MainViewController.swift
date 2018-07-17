@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReachabilitySwift
+import Reachability
 import SDWebImage
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate, RecentsDelegate {
@@ -40,8 +40,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func initialUI() {
         // SearchBar configuration
         searchField.barTintColor = .white
-        let cancelButtonAttributes = [NSForegroundColorAttributeName: UIColor.darkGray]
-        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
+        let cancelButtonAttributes = [convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.darkGray]
+        UIBarButtonItem.appearance().setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary(cancelButtonAttributes), for: .normal)
 
         // RecentsView configuration
         recentsView = RecentsView()
@@ -149,7 +149,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
-    func resignKeyboard() {
+    @objc func resignKeyboard() {
         searchField.endEditing(false)
     }
 
@@ -179,7 +179,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.recentsView.stackView.insertArrangedSubview(recentView, at: 0)
     }
 
-    func recentTapped(_ sender: UITapGestureRecognizer) {
+    @objc func recentTapped(_ sender: UITapGestureRecognizer) {
         let label = sender.view as! UILabel
         searchField.text = label.text!
 
@@ -201,7 +201,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             return
         }
 
-        if reachability.currentReachabilityStatus == .notReachable {
+        if reachability.connection == .none {
             self.showNoInternetConnection()
         } else {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -209,7 +209,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let trimmedSearchTerm = searchTerm.trimmingCharacters(in: .whitespacesAndNewlines)
             searchBar.text = trimmedSearchTerm
 
-            if trimmedSearchTerm.characters.count > 0 {
+            if trimmedSearchTerm.count > 0 {
                 WSClient.sharedInstance.searchByTerm(trimmedSearchTerm, completion: { (results: [Result]?, error: Error?) in
                     if let results = results {
                         self.searchResults = results
@@ -246,7 +246,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
 
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    DispatchQueue.main.async {
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    }
                 })
             }
         }
@@ -314,7 +316,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let url = searchResults[indexPath.row].url {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
         
         searchField.endEditing(false)
@@ -322,4 +324,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
