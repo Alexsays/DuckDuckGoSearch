@@ -2,9 +2,9 @@
 iOS app that searches RelatedTopics for a term in DuckDuckGo using Instant API
 
 ## Language
-Swift 3.1.1
+Swift 4.2
 
-## iOS version
+## iOS minimum version
 10.3
 
 ## Third party libraries
